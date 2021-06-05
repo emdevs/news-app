@@ -16,33 +16,28 @@ function App(props) {
   const [categoryList, setCategoryList] = useState([]);
   const [categories, setCategories] = useState([]);
 
-  //category first loaded up in "/"
-  const [rootCategory, setRootCategory] = useState({});
-  //isLoading? while navbar gets loaded by API
-
-
   //first mounted, do:
   useEffect(() => {
     // loadStorage();
     const fetchData = async () => {
-      let data = await fetch("/id/portaljson"
-      ).then((res) => res.json());
+      try {
+        let data = await fetch("/id/portaljson"
+        ).then((res) => res.json());
 
-      setCategories(data["result"]["categories"]);
-      setCategoryList(data["result"]["categoryList"]);
-      console.log(data);
+        setCategories(data["result"]["categories"]);
+        setCategoryList(data["result"]["categoryList"]);
+      } catch (err) {
+        console.log(err);
+      }
     };
     fetchData();
   }, [])
 
-  useEffect(() => {
-    //set root category
-    // console.log(categoryList);
-    //set TOP as root category
-    let category = categories.find(item => item.name === "TOP");
-    setRootCategory(category);
-    console.log(category);
-  }, [categories]);
+  // useEffect(() => {
+  //   //set root category
+  //   // console.log(categoryList);
+  //   //set TOP as root category
+  // }, [categories]);
 
   // useEffect(() => {
   //   console.log(bookmarks);

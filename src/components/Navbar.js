@@ -9,7 +9,7 @@ const Navbar = (props) => {
 
     return (
         <nav id="navbar">
-            <img class="close-icon" src={closeIcon} onClick={close}/>
+            <img className="close-icon" src={closeIcon} onClick={close}/>
             <Link to= "/bookmark">
                 <p>Bookmarks</p>
             </Link>

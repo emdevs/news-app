@@ -75,7 +75,7 @@ nav {
 nav .close-icon {
   /* border: 1px solid white; */
   align-self: flex-end;
-  margin: 1rem;
+  margin: 1rem 1rem 0 0;
 }
 
 nav a { text-decoration: none; }
@@ -114,13 +114,13 @@ nav h3 {
 
 .section-title {
   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  color: rgb(89, 111, 134);
+  color: rgb(103, 141, 180);
   /* font-weight: 200; */
   margin:0;
   font-size: 1.5rem;
   padding: 0.5rem 1rem;
   text-align: start;
-  background-color: rgb(226, 234, 238);
+  background-color: rgb(204, 227, 238);
 }
 
 .subsection {
