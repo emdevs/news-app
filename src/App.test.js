@@ -8,12 +8,12 @@ import App from './App';
 let mock_data = {
     result: {
         categoryList: [
-            {id: 0, name: "TOP"},
+            {id: 0, name: "Celebrity"},
             {id: 1, name: "Sports"},
             {id: 2, name: "Gossip"}
         ],
         categories: [
-            {id: 0, name: "TOP", templates: [
+            {id: 0, name: "Celebrity", templates: [
                 {
                     id: "subsection_id",
                     title: "Subsection title",
@@ -52,7 +52,7 @@ test("bookmarks link loads", () => {
 })
 
 test("category links load", () => {
-    const top_link = screen.getByText(/TOP/i);
+    const top_link = screen.getByText(/Celebrity/i);
     const sports_link = screen.getByText(/Sports/);
     const gossip_link = screen.getByText(/Gossip/);
 
@@ -62,8 +62,8 @@ test("category links load", () => {
     expect(gossip_link).toBeInTheDocument();
 });
 
-test("if category nav link clicked, its articles should show up", () => {
-    const top_link = screen.getByText(/TOP/i);
+test("if category nav link clicked, its articles show up", () => {
+    const top_link = screen.getByText(/Celebrity/i);
     userEvent.click(top_link);
 
     const article_title = screen.getByText(/article title/);

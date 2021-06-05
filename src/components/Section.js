@@ -2,35 +2,37 @@ import Subsection from "./Subsection";
 import Article from "./Article";
 import React from "react";
 
+import redbookmark from "../imgs/icons8-bookmark-48.png";
+import greybookmark from "../imgs/icons8-bookmark-48-grey.png"
+
 const Section = (props) => {
 
     const { title, data, toggle, isBookmarked } = props;
-    // console.log(data);
-
+    
     //change subseciton key to other than item title later
     return(
         <div className="section">
-            <h2>{title}</h2>
+            <h1 className="section-title">{title}</h1>
             {
             data.map((item) => {
-                // console.log(item);
                 return(
                     <Subsection title={item["title"]} key={item["title"]}>
                         {
-                            // or ust check if article is in bookmark here?
                         //loop through and return each article
                         item["sections"][0]["articles"].map(
                             (article) => {
 
                                 //is the article bookmarked?
-                                let bookmarked = isBookmarked(article.id);
+                                let b_img = (isBookmarked(article.id))?
+                                redbookmark :
+                                greybookmark;
 
                                 return (
                                 <Article 
                                 key={article.id}
                                 article={article}
                                 toggle = {toggle}
-                                bookmarked = {bookmarked}
+                                bookmark = {b_img}
                                 />
                                 )
                             }

@@ -6,6 +6,9 @@ import Navbar from './components/Navbar.js';
 import Article from "./components/Article.js";
 import Section from "./components/Section.js";
 import Bookmarked from "./components/Bookmarked";
+import Loading from "./components/Loading";
+
+import menuIcon from "./imgs/icons8-menu-96.png";
 
 function App(props) {
   const [bookmarks, setBookmarks] = useState([]);
@@ -13,7 +16,10 @@ function App(props) {
   const [categoryList, setCategoryList] = useState([]);
   const [categories, setCategories] = useState([]);
 
-  // const [apiData, setApiData] = useState([]);
+  //category first loaded up in "/"
+  const [rootCategory, setRootCategory] = useState({});
+  //isLoading? while navbar gets loaded by API
+
 
   //first mounted, do:
   useEffect(() => {
@@ -22,37 +28,21 @@ function App(props) {
       let data = await fetch("/id/portaljson"
       ).then((res) => res.json());
 
-      console.log(data);
-      console.log([data["result"]["categoryList"]]);
-
       setCategories(data["result"]["categories"]);
       setCategoryList(data["result"]["categoryList"]);
-      // setApiData(data);
-      // return data;
+      console.log(data);
     };
     fetchData();
   }, [])
 
-  // useEffect(() => {
-
-  // }, [category])
-
-  //set category and category list from apiData
-  // useEffect(() => {
-  //   // console.log(apiData);
-  //   // console.log(apiData["result"]["categoryList"]);
-  //   if (apiData !== [] && apiData["result"] !== undefined) {
-  //     // setCategories(apiData["result"]["categories"]);
-  //     // setCategoryList(apiData["result"]["categoryList"]);
-  //     setCategoryList([{id: 0, name: "TOP"}]);
-  //   }
-  //   // setCategoryList([{id: 0, name: "TOP"}]);
-    
-  // }, [apiData]);
-
   useEffect(() => {
+    //set root category
     // console.log(categoryList);
-  }, [categoryList]);
+    //set TOP as root category
+    let category = categories.find(item => item.name === "TOP");
+    setRootCategory(category);
+    console.log(category);
+  }, [categories]);
 
   // useEffect(() => {
   //   console.log(bookmarks);
@@ -60,9 +50,6 @@ function App(props) {
   //   // console.log(localStorage);
   //   //after bookmarks change, save to localstorage or firebase db
   // }, [bookmarks])
-
-
-  //load localstorage
 
   const loadStorage = () => {
     //check if line-bookmarks exists. if not, set 
@@ -100,36 +87,51 @@ function App(props) {
     return bookmarks.some(item => item.id === id);
   };
 
-  //takes in book marked article id or smth?
+  //Remove Bookmark (on bookmarks page)
   const removeBookmark = (id) => {
     setBookmarks(bookmarks.filter(b => b.id !== id));
   }
 
-  //clear all bookmarks
+  //clear all bookmarks (on bookmarks page)
   const clearBookmarks = () => {
     setBookmarks([]);
   }
 
-  // dynamically set exact path for each route to render section
+  //Navbar toggle functions
+  const closeNavbar = () => {
+    document.getElementById("navbar").style.width = "0";
+  };
+
+  const openNavbar = () => {
+    document.getElementById("navbar").style.width = "300px";
+  }
+
+  // something like if categories !== [] (assuming api data loaded)
+  //then render TOP in page content 
   return (
     <Router>
       <div className="App">
-        <Navbar categories={categoryList} />
+        <Navbar categories={categoryList} close = {closeNavbar}/>
         
         <div id="page-content">
-  
+          <div id="header">
+            <h1>LINE <span>News</span></h1>
+            <img src={menuIcon} onClick={openNavbar}/>
+          </div>
+
+          {(categoryList.length === 0) && <Loading />}   
+          
           <Switch>
             {
               categoryList.map((tab) => {
-
-                //unless tab name is MAIN category
-
                 let route = `/${tab["name"]}`;
                 //search for category articles in categories with matching ID
                 let category = categories.find(item => item["id"] === tab["id"]);
                 //filter out ads
                 // data = data["templates"].filter(i => i["title"] !== undefined);
-
+                if (tab["name"] === "TOP") {
+                  route = ["/", `/${tab["name"]}`]
+                };
                 return(
                   <Route exact path={route} key={tab["id"]}
                   render={(props) => (
@@ -165,8 +167,6 @@ export default App;
 
 
 
-
-
 // const url = "https://today.line.me/id/portaljson";
 
 
@@ -175,3 +175,21 @@ export default App;
   // const { fetchData } = props;
 
   //fixthis tun it back to normal promise
+
+
+  // useEffect(() => {
+
+  // }, [category])
+
+  //set category and category list from apiData
+  // useEffect(() => {
+  //   // console.log(apiData);
+  //   // console.log(apiData["result"]["categoryList"]);
+  //   if (apiData !== [] && apiData["result"] !== undefined) {
+  //     // setCategories(apiData["result"]["categories"]);
+  //     // setCategoryList(apiData["result"]["categoryList"]);
+  //     setCategoryList([{id: 0, name: "TOP"}]);
+  //   }
+  //   // setCategoryList([{id: 0, name: "TOP"}]);
+    
+  // }, [apiData]);
