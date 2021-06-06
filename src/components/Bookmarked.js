@@ -4,28 +4,26 @@ const Bookmarked = (props) => {
 
     const { bookmarks, clearAll, clearOne } = props;
 
-    console.log(bookmarks);
-    //categoryName
     return (
         <div id="bookmarks">
             <h2>My Page</h2>
 
-            <div class="subheader"> 
+            <div className="subheader"> 
                 <p>Bookmarks ({bookmarks.length})</p>
-                <button onClick={clearAll}>Delete All</button>
+                <button id="delete-bookmarks" onClick={clearAll}>Delete All</button>
             </div>
             
             {   
             bookmarks.map(item => {
                 return(
                     <div className="bookmark" key={item.id}>
-                        <div class="container">
+                        <div className="container">
                             <img src={`https://obs.line-scdn.net/${item.thumbnail.hash}/w1200`} alt="bookmark"/>
                         </div>    
                         
                         <p className="category">{item.categoryName}</p>
                         
-                        <div class="title-container">
+                        <div className="title-container">
                             <a href={item.url.url} rel="noreferrer" target="_blank">
                                 {item.title}
                             </a>

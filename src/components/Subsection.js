@@ -1,12 +1,10 @@
-//a container for articles.
-
 const Subsection = (props) => {
-    const { title } = props;
+    const { title , addStyle } = props;
 
     return(
         <div className="subsection">
             <h2>{title}</h2>
-            <div className="article-container">
+            <div className={`article-container ${addStyle}`}>
                 {/* passed in articles go here */}
                 {props.children}
             </div>

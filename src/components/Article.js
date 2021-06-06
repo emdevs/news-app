@@ -1,5 +1,5 @@
 const Article = (props) => {
-    //also viewCount and id category Name
+
     const { article, toggle, bookmark} = props;
 
     const getImgUrl = (hash) => {
@@ -17,7 +17,6 @@ const Article = (props) => {
                     {article.title}
                 </a>
 
-                {/* maybe add a class? or something to check if diabled to chage styling */}
                 <img className ="bookmark-icon" src={bookmark} onClick={() => toggle(article)}/>
             </div>
         </div>

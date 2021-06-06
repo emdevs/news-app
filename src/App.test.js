@@ -70,30 +70,3 @@ test("if category nav link clicked, its articles show up", () => {
     expect(article_title).toBeInTheDocument();
 
 });
-
-
-
-//clcik on article, shhould be button. click on butotn. click on bookmarks link.
-//name of article should be there
-//click on article. click on button twice. click on book makrs link. name of article should
-//NOT  be there. 
-
-
-
-//test that bookmark button adds to bookmarks
-
-//test that twice click bookmark buttons reverts bookmarks
-
-//test bookmark delete button
-
-//test clear all bookmarks button
-
-
-// const mockFetch = jest.fn((path) => {
-
-// global.fetch = jest.fn(() => Promise.resolve({
-//     json: () => Promise.resolve(
-//         {result: "A"}
-//         )
-//     })
-// );

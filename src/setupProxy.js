@@ -5,9 +5,7 @@ module.exports = function(app) {
         '/id/portaljson',
         createProxyMiddleware({
             target: 'https://today.line.me',
-            changeOrigin: true,
-            pathRewrite: { '^/api': '' },
-            secure: false
+            changeOrigin: true
         })
     );
 };

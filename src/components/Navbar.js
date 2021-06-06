@@ -2,7 +2,7 @@ import {Link} from "react-router-dom";
 import React from "react";
 import Loading from "./Loading.js"
 
-import closeIcon from "../imgs/icons8-macos-close-48.png";
+import closeIcon from "../imgs/closeicon.png";
 
 const Navbar = (props) => {
     const { categories, close } = props;

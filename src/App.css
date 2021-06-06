@@ -1,12 +1,7 @@
 .App {
   text-align: center;
   display: flex;
-  border: 2px rgb(53, 221, 61) solid;
-  background-color: rgb(235, 235, 235);
-}
-
-body::-webkit-scrollbar-track {
-  background: black;
+  background-color: rgb(243, 239, 239);
 }
 
 #header {
@@ -17,18 +12,16 @@ body::-webkit-scrollbar-track {
   background-color: rgb(63, 218, 89);
 }
 
-/* _______________________________________________ */
-
 #header h1 {
   margin: 0;
-  /* font-family: "Roboto"; */
   font-size: 4rem;
   color: white;
   padding: 1rem;
 }
 
 #header span {
-  font-size: 1rem;
+  font-size: 1.5rem;
+  font-family: "Roboto Condensed";
 }
 
 #header img {
@@ -47,7 +40,7 @@ body::-webkit-scrollbar-track {
   margin: 0 15% 0 15%;
   width: 100%;
   min-height: 100vh;
-  background-color: rgb(243, 243, 243);
+  background-color: rgb(255, 255, 255);
 }
 
 
@@ -57,23 +50,20 @@ nav {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* justify-content: center; */
-
-  height: 100%; /* 100% Full-height */
-  width: 0; /* 0 width - change this with JavaScript */
-  position: fixed; /* Stay in place */
-  z-index: 2; /* Stay on top */
+  font-family: "Roboto Condensed";
+  height: 100%; 
+  width: 0; 
+  position: fixed; 
+  z-index: 2; 
   top: 0;
   left: 0;
-  background-color: rgb(43, 43, 43); /* Black*/
-  overflow-x: hidden; /* Disable horizontal scroll */
+  background-color: rgb(43, 43, 43); 
+  overflow-x: hidden; 
   overflow-y: auto;
-  /* padding-top: 60px; */
-  transition: 0.2s; /* 0.5 second transition effect to slide in the sidebar */
+  transition: 0.2s;
 }
 
 nav .close-icon {
-  /* border: 1px solid white; */
   align-self: flex-end;
   margin: 1rem 1rem 0 0;
 }
@@ -81,6 +71,7 @@ nav .close-icon {
 nav a { text-decoration: none; }
 
 nav p {
+  
   font-size: 1.2rem;
   color: white;
   position: relative;
@@ -115,7 +106,8 @@ nav h3 {
 .section-title {
   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   color: rgb(103, 141, 180);
-  /* font-weight: 200; */
+  font-family: "Roboto Condensed";
+  font-weight: 200;
   margin:0;
   font-size: 1.5rem;
   padding: 0.5rem 1rem;
@@ -123,28 +115,33 @@ nav h3 {
   background-color: rgb(204, 227, 238);
 }
 
-.subsection {
-  background-color: white;
-}
+.subsection { background-color: white }
 
 .subsection h2 {
   font-family: "Noto Sans TC";
   margin: 0;
   padding: 2rem 0 1rem 0;
-  /* font-family: "Lato"; */
   color: rgb(24, 77, 29);
 }
 
 .article-container {
-  
   display: grid;
   grid-template: auto / 1fr 1fr;
+}
+
+/* every third category subsection, change layout */
+.article-container.addStyle {
+  margin: 1rem;
+  border: 1px rgb(230, 230, 230) solid;
+  background-color: rgb(230, 230, 230);
+  grid-template: auto / 1fr 1fr 1fr;
 }
 
 
 /* article styling */
 
 .article {
+  background-color: white;
   margin: 1rem;
   border: 1px rgb(238, 238, 238) solid;
   box-shadow:1px 1px 5px rgb(218, 218, 218);
@@ -152,7 +149,6 @@ nav h3 {
 
 .article .info {
   display: flex;
-  /* hacky but whatever */
   margin: 0.8rem;
   margin-right: 0.2rem;
   justify-content: space-between;
@@ -161,8 +157,13 @@ nav h3 {
 .article a {
   text-align: start;
   font-size: 1rem;
+  text-decoration: none;
+  color: rgb(26, 26, 26);
+  font-size: 1.3rem;
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
+
+.article a:hover { color: rgb(58, 58, 58) }
 
 .bookmark-icon {
   height: 35px;
@@ -171,45 +172,31 @@ nav h3 {
 
 .container {
   position: relative;
-  width: 100%; /* The size you want */
+  width: 100%;
 }
 .container:after {
   content: "";
   display: block;
-  padding-bottom: 70%; /* The padding depends on the width, not on the height, so with a padding-bottom of 100% you will get a square */
+  padding-bottom: 70%;
 }
 
 .container img {
-  position: absolute; /* Take your picture out of the flow */
+  position: absolute; 
   top: 0;
   bottom: 0;
   left: 0;
-  right: 0; /* Make the picture taking the size of it's parent */
-  width: 100%; /* This if for the object-fit */
-  height: 100%; /* This if for the object-fit */
-  object-fit: cover; /* Equivalent of the background-size: cover; of a background-image */
+  right: 0; 
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover; 
   object-position: center;
 }
 
 
-.article a {
-  text-decoration: none;
-  color: rgb(26, 26, 26);
-  font-size: 1.3rem;
-}
-
-.article a:hover {
-  color: rgb(98, 230, 87);
-}
-
 /* BOOKMARKS */
-#bookmarks {
-  margin: 2rem;
-}
+#bookmarks { margin: 2rem }
 
-#bookmarks h2 {
-  text-align: start;
-}
+#bookmarks h2 { text-align: start }
 
 .bookmark {
   background-color: white;
@@ -218,6 +205,7 @@ nav h3 {
   display: flex;
   align-items: center;
 }
+
 .bookmark .container {
   height: 120px;
   width: 120px;
@@ -245,9 +233,20 @@ nav h3 {
   margin: 0 1rem;
   width: 25px;
   height: 25px;
-  /* border: 1px solid; */
 }
 
+#delete-bookmarks {
+  border: none;
+  color: white;
+  font-size: 0.9rem;
+  padding: 0.5rem;
+  border-radius: 5px;
+  background-color: rgb(197, 63, 63);
+  outline: none;
+}
+#delete-bookmarks:hover {
+  background-color: rgb(173, 39, 39);
+}
 
 .title-container {
   display: flex;
@@ -261,7 +260,6 @@ nav h3 {
   align-items: center;
   justify-content: space-between;
 }
-
 
 /* LOADING ICON */
 
@@ -282,14 +280,8 @@ nav h3 {
   animation-timing-function: ease-in-out;
 }
 
-
-.loading-icon span:nth-child(2) {
-  animation-delay: 0.3s;
-}
-
-.loading-icon span:nth-child(3) {
-  animation-delay: 0.5s;
-}
+.loading-icon span:nth-child(2) { animation-delay: 0.3s }
+.loading-icon span:nth-child(3) { animation-delay: 0.5s }
 
 @keyframes dots {
   50% {
@@ -298,13 +290,22 @@ nav h3 {
   }
 }
 
-
+@media screen and (max-width: 1024px) {
+  .article-container.addStyle {
+    grid-template: auto / 1fr 1fr;
+  }
+}
 
 @media screen and (max-width: 768px) {
-  .article-container  {
+  .article-container,
+  .article-container.addStyle  {
     grid-template: auto / 1fr;
   }
   #page-content {
     margin: 0 2% 0 2%;
+  }
+
+  .bookmark {
+    padding: 1rem 0;
   }
 }
